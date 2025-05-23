@@ -1,15 +1,20 @@
 
 from django.views.generic.edit import FormView
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView,DetailView
 from .forms import ContactForm
 from django.urls import reverse_lazy
-from .models import ContactMessage,CertificateEntry,ResumeEntry
+from .models import ContactMessage,CertificateEntry,ResumeEntry,AboutMe
 # Create your views here.
 class Home(TemplateView):
     template_name = "core/home.html"
 
-class About(TemplateView):
+class About(DetailView):
+    model=AboutMe
     template_name = "core/about.html"
+
+    def get_object(self):
+        return AboutMe.objects.first()
+
 
 class Resume(TemplateView):
     template_name = "core/resume.html"
