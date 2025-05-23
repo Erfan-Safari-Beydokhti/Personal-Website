@@ -32,3 +32,12 @@ class CertificateEntry(models.Model):
     url=models.URLField(blank=True)
     def __str__(self):
         return self.title
+
+
+class AboutMe(models.Model):
+    name=models.CharField(max_length=100)
+    bio=models.TextField()
+    profile_picture=models.FileField(upload_to='about/',blank=True,null=True)
+    skills=models.TextField(help_text="Comma-separated skills")
+    def __str__(self):
+        return self.name
