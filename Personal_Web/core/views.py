@@ -11,3 +11,6 @@ class About(TemplateView):
 
 class Resume(TemplateView):
     template_name = "core/resume.html"
+
+class Contact(TemplateView):
+    template_name = "core/contact.html"
