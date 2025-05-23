@@ -8,5 +8,5 @@ class ContactMessage(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.email}
+        return "$s - %s" % self.name,self.email
 
