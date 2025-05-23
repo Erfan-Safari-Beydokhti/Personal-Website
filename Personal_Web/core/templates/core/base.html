@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block title %}My Personal Website{% endblock %}</title>
 </head>
 <body>
+
     <nav>
         <a href="{% url 'home' %}">Home</a> |
         <a href="{% url 'about' %}">About</a> |
