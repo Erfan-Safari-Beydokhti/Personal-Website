@@ -24,3 +24,11 @@ class ResumeEntry(models.Model):
     ])
     def __str__(self):
         return self.title
+class CertificateEntry(models.Model):
+    title=models.CharField(max_length=100)
+    issuer=models.CharField(max_length=100)
+    issue_date=models.DateField()
+    file=models.FileField(upload_to='certificates/',blank=True,null=True)
+    url=models.URLField(blank=True)
+    def __str__(self):
+        return self.title
