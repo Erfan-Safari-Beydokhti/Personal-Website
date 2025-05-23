@@ -3,6 +3,33 @@
 {% block title %}Resume{% endblock %}
 
 {% block content %}
-<h1>Welcome</h1>
-<p>This is the Resume page</p>
+    <h1>My Resume</h1>
+    <h2>Experience & Education</h2>
+    {% for entry in entries %}
+        <div>
+            <h3>{{entry.titel}}</h3>
+            <p>{{ entry.description }}</p>
+            <p><strong>{{ entry.start_date }}</strong> - <strong>{{ entry.end_date }}</strong></p>
+        </div>
+    {% empty %}
+        <p>No resume entries available</p>
+    {% endfor %}
+
+    <hr>
+
+    <h2>Certificates</h2>
+    {% for certificate in certificates %}
+        <div>
+            <h3>{{ certificate.title }}</h3>
+            <p>Issued by: {{ certificate.issuer }}</p>
+            <p>Date: {{ certificate.issue_date }}</p>
+            {% if certificate.file %}
+                <a href="{{ certificate.file.url }}" target="_blank">Download</a>
+            {% elif certificate.url %}
+                <a href="{{ certificate.url }}" target="_blank">View Online</a>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No certificates uploaded yet</p>
+    {% endfor %}
 {% endblock %}
