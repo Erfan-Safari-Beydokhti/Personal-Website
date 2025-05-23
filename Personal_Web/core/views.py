@@ -15,6 +15,15 @@ class About(DetailView):
     def get_object(self):
         return AboutMe.objects.first()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        about = self.get_object()
+        if about and about.skills:
+            context['skills'] = [skill.strip() for skill in about.skills.split(',')]
+        else:
+            context['skills'] = []
+        return context
+
 
 class Resume(TemplateView):
     template_name = "core/resume.html"

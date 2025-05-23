@@ -3,6 +3,19 @@
 {% block title %}About{% endblock %}
 
 {% block content %}
-<h1>Welcome</h1>
-<p>This is the About page</p>
+    <h1>About Me</h1>
+    {% if object %}
+        <img src="{{ object.profile_picture.url }}" alt="Profile Picture" style="width: 150px ; border-radius: 50%" >
+        <h2>{{ object.name }}</h2>
+        <p>{{ object.bio }}</p>
+        <hr>
+        <h3>Skills</h3>
+            <ul>
+                {% for skill in skills%}
+                    <li>{{ skill}}</li>
+                {% endfor %}
+            </ul>
+    {% else %}
+        <p>No About info found</p>
+    {% endif %}
 {% endblock %}
