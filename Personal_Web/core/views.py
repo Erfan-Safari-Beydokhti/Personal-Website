@@ -3,7 +3,7 @@ from django.views.generic.edit import FormView
 from django.views.generic import TemplateView
 from .forms import ContactForm
 from django.urls import reverse_lazy
-from .models import ContactMessage
+from .models import ContactMessage,CertificateEntry,ResumeEntry
 # Create your views here.
 class Home(TemplateView):
     template_name = "core/home.html"
@@ -13,6 +13,12 @@ class About(TemplateView):
 
 class Resume(TemplateView):
     template_name = "core/resume.html"
+
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context["entries"]=ResumeEntry.objects.all()
+        context["certificates"]=CertificateEntry.objects.all()
+        return context
 
 class Contact(FormView):
     model=ContactMessage
