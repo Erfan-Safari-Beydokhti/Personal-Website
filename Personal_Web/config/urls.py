@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from django.urls import path,include
-from core.views import Home,About
+from core.views import Home,About,Resume
 urlpatterns = [
     path('admin/',admin.site.urls),
     path('',Home.as_view(),name="home"),
     path('about',About.as_view(),name="about"),
+    path('resume',Resume.as_view(),name="resume"),
 ]

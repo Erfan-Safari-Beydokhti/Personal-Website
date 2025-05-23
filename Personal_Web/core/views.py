@@ -8,3 +8,6 @@ class Home(TemplateView):
 
 class About(TemplateView):
     template_name = "core/about.html"
+
+class Resume(TemplateView):
+    template_name = "core/resume.html"
