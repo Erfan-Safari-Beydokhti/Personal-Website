@@ -1,6 +1,8 @@
-from django.shortcuts import render
+
+from django.views.generic.edit import FormView
 from django.views.generic import TemplateView
-from templates import *
+from .forms import ContactForm
+from django.urls import reverse_lazy
 
 # Create your views here.
 class Home(TemplateView):
@@ -12,5 +14,13 @@ class About(TemplateView):
 class Resume(TemplateView):
     template_name = "core/resume.html"
 
-class Contact(TemplateView):
+class Contact(FormView):
     template_name = "core/contact.html"
+    form_class = ContactForm
+    success_url = reverse_lazy('contact')
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+
